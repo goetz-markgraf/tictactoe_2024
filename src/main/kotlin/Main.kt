@@ -1,10 +1,13 @@
 val playerField = mutableListOf('1','2','3','4','5','6','7','8','9')
-val choiceX = mutableListOf(' ',' ',' ',' ',' ')
-val choiceO = mutableListOf(' ',' ',' ',' ',' ')
+val choiceX = mutableListOf(' ')
+val choiceO = mutableListOf(' ')
+var priority = true
 
 fun main() {
-    showField()
-    placeX()
+    while (true) {
+        place()
+        priority = !priority
+    }
 }
 fun showField() {
     println("+---+---+---+")
@@ -16,26 +19,16 @@ fun showField() {
     println("+---+---+---+")
 }
 
-fun placeX() {
+fun place() {
     val index = readln().toIntOrNull()
-    if (index != null) {
-        playerField[index - 1] = 'X'
+    if (index != null && index in 1..9) {
+        if (priority) {
+            playerField[index - 1] = 'X'
+        } else {
+            playerField[index - 1] = 'O'
+        }
         showField()
-        placeO()
     } else {
         println("Enter a number between 1 and 9")
-        placeX()
-    }
-}
-
-fun placeO() {
-    val index = readln().toIntOrNull()
-    if (index != null) {
-        playerField[index - 1] = 'O'
-        showField()
-        placeX()
-    } else {
-        println("Enter a number between 1 and 9")
-        placeO()
     }
 }
