@@ -1,14 +1,20 @@
-val playerField = mutableListOf('1','2','3','4','5','6','7','8','9')
+val playerField = mutableListOf('1', '2', '3', '4', '5', '6', '7', '8', '9')
 val choiceX = mutableListOf(' ')
 val choiceO = mutableListOf(' ')
-var priority = true
+
+enum class Player {
+    X, O
+}
 
 fun main() {
+    var player = Player.X
     showField()
     while (true) {
-        place()
+        place(player)
+        player = if (player == Player.X) Player.O else Player.X
     }
 }
+
 fun showField() {
     println("+---+---+---+")
     println("| " + playerField[0] + " | " + playerField[1] + " | " + playerField[2] + " |")
@@ -18,13 +24,14 @@ fun showField() {
     println("| " + playerField[6] + " | " + playerField[7] + " | " + playerField[8] + " |")
     println("+---+---+---+")
 }
-fun place() {
+
+fun place(player: Player) {
+    print(player.name + " player's turn: ")
     val index = readln().toIntOrNull()
     if (index != null && index in 1..9) {
-        if (playerField[index-1] !in listOf('X','O')) {
-            playerField[index - 1]=if(priority) 'X' else 'O'
+        if (playerField[index - 1] !in listOf('X', 'O')) {
+            playerField[index - 1] = if (player == Player.X) 'X' else 'O'
             showField()
-            priority= !priority
         } else {
             println("The cell is already taken!")
         }
