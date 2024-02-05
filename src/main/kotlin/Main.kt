@@ -19,11 +19,11 @@ fun showField() {
 fun placeX() {
     val index = readln().toIntOrNull()
     if (index != null) {
-        playerField[index - 1] = 'x'
+        playerField[index - 1] = 'X'
         showField()
         placeO()
     } else {
-        println("Enter a number")
+        println("Enter a number between 1 and 9")
         placeX()
     }
 }
@@ -31,11 +31,11 @@ fun placeX() {
 fun placeO() {
     val index = readln().toIntOrNull()
     if (index != null) {
-        playerField[index - 1] = 'o'
+        playerField[index - 1] = 'O'
         showField()
         placeX()
     } else {
-        println("Enter a number")
+        println("Enter a number between 1 and 9")
         placeO()
     }
 }
