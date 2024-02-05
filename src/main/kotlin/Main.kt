@@ -11,7 +11,7 @@ fun main() {
     showField()
     while (true) {
         place(player)
-        player = if (player == Player.X) Player.O else Player.X
+        player = if (player == Player.X ) Player.O else Player.X
     }
 }
 
@@ -34,8 +34,10 @@ fun place(player: Player) {
             showField()
         } else {
             println("The cell is already taken!")
+            place(player)
         }
     } else {
         println("Enter a number between 1 and 9")
+        place(player)
     }
 }
