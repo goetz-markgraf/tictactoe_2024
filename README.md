@@ -1,5 +1,4 @@
-# TictTacToe 2024
-
+# TicTacToe 2024
 
 Game of Tic Tac Toe by cc interns
 
