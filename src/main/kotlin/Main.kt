@@ -4,9 +4,9 @@ val choiceO = mutableListOf(' ')
 var priority = true
 
 fun main() {
+    showField()
     while (true) {
         place()
-        priority = !priority
     }
 }
 fun showField() {
@@ -18,16 +18,16 @@ fun showField() {
     println("| " + playerField[6] + " | " + playerField[7] + " | " + playerField[8] + " |")
     println("+---+---+---+")
 }
-
 fun place() {
     val index = readln().toIntOrNull()
     if (index != null && index in 1..9) {
-        if (priority) {
-            playerField[index - 1] = 'X'
+        if (playerField[index-1] !in listOf('X','O')) {
+            playerField[index - 1]=if(priority) 'X' else 'O'
+            showField()
+            priority= !priority
         } else {
-            playerField[index - 1] = 'O'
+            println("The cell is already taken!")
         }
-        showField()
     } else {
         println("Enter a number between 1 and 9")
     }
