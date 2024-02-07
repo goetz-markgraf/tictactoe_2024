@@ -24,7 +24,6 @@ fun main() {
         val result = place(playerField, player, if (player == Player.X) playerXName else playerOName)
         playerField = result.first
         val action = result.second
-        var newPlayerField = playerField
 
         if (action == Action.MOVE) {
             val state = check(playerField, player)
@@ -43,7 +42,7 @@ fun main() {
         } else if (action == Action.STOPP) {
             break
         } else if (action == Action.NEU) {
-          newPlayerField = newPlayerField.mapIndexed{index,element->(index+49).toChar()}
+          val newPlayerField = playerField.mapIndexed{index,element->(index+49).toChar()}
             showField(newPlayerField)
             playerField=newPlayerField
         } else if (action == Action.INFO) {
