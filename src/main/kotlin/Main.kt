@@ -42,11 +42,13 @@ fun main() {
         } else if (action == Action.STOPP) {
             break
         } else if (action == Action.NEU) {
-          val newPlayerField = playerField.mapIndexed{index,element->(index+49).toChar()}
-            showField(newPlayerField)
-            playerField=newPlayerField
+            playerField = listOf('1', '2', '3', '4', '5', '6', '7', '8', '9')
+            player = Player.X
+            showField(playerField)
         } else if (action == Action.INFO) {
-
+            println("Player X: $playerXName, " + playerField.count{it == 'X'} + " Felder gesetzt")
+            println("Player O: $playerOName, " + playerField.count{it == 'O'} + " Felder gesetzt")
+            println("Insgesamt: " + playerField.count{it == 'X' || it == 'O'} + " Felder gesetzt")
         } else if (action == Action.HILFE) {
             println("STOPP: das Spiel beenden\nNEU: das Spiel neustarten\nINFO: die Namen und die Anzahl gesetzter Felder der Spieler und der Spielfeld anzeigen")
         }
